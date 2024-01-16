@@ -1,0 +1,31 @@
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          spring:
+            registration:
+              client-id: "spring"
+              # bcrypt hash of "topsecret"
+              client-secret: "{bcrypt}$2a$14$qr6JkXnWtDHzBUaWzjFP0..1KrNCJf5NYFDE/ooZGVZZIethutGeC"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+                - "client_credentials"
+              redirect-uris:
+                - "http://127.0.0.1:8080/login/oauth2/code/spring"
+              scopes:
+                - "openid"
+                - "profile"
+                - "email"
+                - "address"
+                - "phone"
+            require-authorization-consent: true
+    user:
+      # bcrypt hash of "password"
+      password: "{bcrypt}$2a$14$FYCAoxDYl.oD0j4uCIqGhepzRZjsjaiI0nz1crPXEbQwMUBT6.pqK"
+
+server:
+  port: 9090
